@@ -17,7 +17,7 @@ void Product::enterProduct(Product list_product[], int& number, int choice) {
 	gotoXY(x0, y + 1);
 	cout << "Ma San Pham:";
 	gotoXY(x1, y + 1);
-	
+	cin.ignore();
 	cin >> this->ProductID;
 	if (choice == 0)
 	{
@@ -70,8 +70,8 @@ void Product::enterProduct(Product list_product[], int& number, int choice) {
 	gotoXY(x0, y + 17);
 	cout << "Mo Ta:";
 	gotoXY(x1, y + 17);
-	cin >> (this->Description);
 	cin.ignore();
+	cin.getline(this->Description, 25);
 	ShowCur(0);
 
 end1:

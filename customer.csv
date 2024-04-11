@@ -9,7 +9,7 @@ Customer Phone Number1,Customer Name,Gender,Purchased Product ID,Purchased Produ
 
 ,,,MJT006,Leather Biker Jacket,L,1,120,0,120,01/04/2024
 
-377123918,Tran Huu Nghia,Male,FCD012,Knit Cardigan,M,1,50,30,35,04/05/2024
+25042024,Huu Nghia,Male,FCD012,Knit Cardigan,M,1,50,30,35,04/05/2024
 
 ,,,MSW013,Crewneck Sweater,L,1,30,20,24,04/05/2024
 
@@ -28,4 +28,10 @@ Customer Phone Number1,Customer Name,Gender,Purchased Product ID,Purchased Produ
 25042024,Chieu Bao,Male,UNS005,High Top Sneakers,XL,2,60,20,96,07/04/2024
 
 ,,,MJT006,Leather Biker Jacket,L,1,120,0,120,07/04/2024
+
+0377129315,HUU THUAN,Male,FLG014,High-Waisted Legging,M,2,30,20,48,12/04/2024
+
+,,,UHT015,Baseball Cap,S,3,20,10,54,12/04/2024
+
+,,,FSC017,Cashmere Scarf,L,5,60,30,210,12/04/2024
 

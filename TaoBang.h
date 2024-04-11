@@ -441,6 +441,7 @@ void TaoBangCustomer(int numProduct, int numberCustomer, int numProinCus[])
 int MenuDong(string NameOBJ, char  nameHead[][40], int  Soluong) {
 	TextColor(1);
 	system("cls");
+	int y = 10;
 	vemenu(NameOBJ, nameHead, x, y, width, Soluong);
 	int xp = x;
 	int yp = y;

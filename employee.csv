@@ -1,9 +1,9 @@
 IdUser,NameUser,PhoneUser,MailUser,Shift,Day
 NV01,HuuNghia,377129,HuuNghia@gmail,3,FriDay
 
-NV02,ChieuBao,125890,ChieuBao@gmail,6,SunDay
-
-NV03,NgocHung,367865,NgocHung@gmail,2,MonDay
+NV08,NguyenChieuBAo,123567,NguyenChieubao@gmail,2,Satturday
 
 NV04,MinhThien,456127,MinhThien@gmail,1,TuesDay
+
+NV12,Tran Nghia,124567,Nghia@gmail,1,Sunday
 

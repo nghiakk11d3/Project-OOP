@@ -266,7 +266,7 @@ int read_data_employee(Employee list_employee[])
 	}
 
 	// khởi tạo biến đếm số lượng nhân viên
-	char line[50];
+	char line[100];
 	int field_count;
 	int num_employee = 0;
 	char* field[6] = { 0 };
@@ -399,10 +399,15 @@ void Customer::menuStore(Product list_product[], int& number, Customer list_cust
 		break;
 	case 1:
 		menuCustomer(list_product, number, list_customer, numberCustomer);
+		menuStore(list_product, number, list_customer, numberCustomer, list_employee, numberEmployee);		
 		break;
 	case 2:
 		menuEmployee(list_employee, numberEmployee);
 		menuStore(list_product, number, list_customer, numberCustomer, list_employee, numberEmployee);
+		break;
+
+	case 3:
+		return;
 		break;
 	}
 }
