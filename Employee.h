@@ -1,4 +1,4 @@
-﻿
+
 #ifndef EMPLOYEE
 #define EMPLOYEE
 
@@ -11,15 +11,15 @@
 using namespace std;
 class Employee :public UserName {
 public:
-	float wage;
-	
+
+
 	int returnEmployee(Employee list_employee[], int numberEmployee, char searchAcc[]);
 	void InputEmp();
 	void addEmployee(Employee list_employee[], int& numberEmployee);
 	void print1Emp(Employee employee, int x, int y, int i);
 	void printListEmp(Employee list_employee[], int number);
 	void menuEmployee(Employee list_employee[], int& numberEmployee);
-	void editEmployee(Employee list_employee[], int &numberEmployee);
+	void editEmployee(Employee list_employee[], int& numberEmployee);
 	void deleteEmployee(Employee list_employee[], int& numberEmployee);
 	void statusReturn1line1(int numProduct)
 	{
@@ -49,7 +49,7 @@ void Employee::InputEmp() {
 	int x1 = 90;
 	int high = 16;
 	int width = 25;
-	
+	y = 10;
 	ShowCur(1);
 	HopKTen(x, y, width, high, 11, 1);
 	HopKTen(x + 26, y, width, high, 11, 1);
@@ -57,7 +57,7 @@ void Employee::InputEmp() {
 	gotoXY(x0, y + 1);
 	cout << "Ma Nhan Vien:";
 	gotoXY(x1, y + 1);
-	cin >>this->ID;
+	cin >> this->ID;
 	gotoXY(x0, y + 3);
 	cout << "Ten Nhan Vien:";
 	gotoXY(x1, y + 3);
@@ -81,7 +81,7 @@ void Employee::InputEmp() {
 	gotoXY(x1, y + 11);
 	cin >> (this->Day);
 	cin.ignore();
-	
+
 
 }
 void Employee::addEmployee(Employee list_employee[], int& numberEmployee)
@@ -102,11 +102,11 @@ void Employee::addEmployee(Employee list_employee[], int& numberEmployee)
 	char status[][40] = { "Da Them Thanh Cong", "Nhan [ENTER] De Quay Lai" };
 	statusreturnMenu(status, 45);
 	_getch();
-	
+
 	menuEmployee(list_employee, numberEmployee);
 }
 void Employee::print1Emp(Employee employee, int x, int y, int i) {
-	int x_width = 1;
+	int x_width = 2;
 	gotoXY(x + x_width, y + 2 * i + 1);
 	cout << employee.ID;
 	x_width += lengEmp[0];
@@ -129,49 +129,49 @@ void Employee::printListEmp(Employee list_employee[], int number)
 {
 	TextColor(1);
 	system("cls");
-	TaoBangHeader(number, 37, 0, "DANH SACH SAN PHAM", lengEmp, HeaderEmp, 6);
+	TaoBangHeader(number, 37, 0, "DANH SACH NHAN VIEN", lengEmp, HeaderEmp, 6);
 	SetColor(7);
 	y += 4;
 	for (int i = 0; i < number; i++)
 	{
-		print1Emp(list_employee[i],37, 4, i);
+		print1Emp(list_employee[i], 37, 4, i);
 	}
-	statusReturn1line1(number - 2);
+	statusReturn1line1(number - 1);
 	menuEmployee(list_employee, number);
 
 }
-void Employee::editEmployee(Employee list_employee[], int &numberEmployee) {
-	
-		TextColor(1);
-		system("cls");
-		char nameHead[][40] = { "Sua Thong Tin Nhan Vien ", "Nhap Ma Nhan Vien: " };
-		char searchID[10];
-		bool KT = false;
-		int Index = -1;
-		taomenuYeuCau(nameHead, searchID);
-		for (int i = 0; i < numberEmployee; i++)
+void Employee::editEmployee(Employee list_employee[], int& numberEmployee) {
+
+	TextColor(1);
+	system("cls");
+	char nameHead[][40] = { "Sua Thong Tin Nhan Vien ", "Nhap Ma Nhan Vien: " };
+	char searchID[10];
+	bool KT = false;
+	int Index = -1;
+	taomenuYeuCau(nameHead, searchID);
+	for (int i = 0; i < numberEmployee; i++)
+	{
+		if (strcmp(searchID, list_employee[i].ID) == 0)
 		{
-			if (strcmp(searchID, list_employee[i].ID) == 0)
-			{
-				list_employee[i].InputEmp();
-				KT = true;
-			}
-		}
-		if (KT == true)
-		{
-			char status[][40] = { "Da Sua Thanh Cong", "Nhan [ENTER] De Quay Lai" };
-			statusreturnMenu(status, 45);
-			_getch();
-			menuEmployee(list_employee, numberEmployee);
-		}
-		else
-		{
-			char status[][40] = { "Khong Tim Thay Ma", "Nhan [ENTER] De Quay Lai" };
-			statusreturnMenu(status, 45);
-			_getch();
-			menuEmployee(list_employee, numberEmployee);
+			list_employee[i].InputEmp();
+			KT = true;
 		}
 	}
+	if (KT == true)
+	{
+		char status[][40] = { "Da Sua Thanh Cong", "Nhan [ENTER] De Quay Lai" };
+		statusreturnMenu(status, 45);
+		_getch();
+		menuEmployee(list_employee, numberEmployee);
+	}
+	else
+	{
+		char status[][40] = { "Khong Tim Thay Ma", "Nhan [ENTER] De Quay Lai" };
+		statusreturnMenu(status,20);
+		_getch();
+		menuEmployee(list_employee, numberEmployee);
+	}
+}
 void Employee::deleteEmployee(Employee list_employee[], int& numberEmployee) {
 	TextColor(1);
 	system("cls");
@@ -190,21 +190,21 @@ void Employee::deleteEmployee(Employee list_employee[], int& numberEmployee) {
 			numberEmployee--;
 			KT = true;
 			i--;
-			
+
 		}
-		
+
 	}
 	if (KT == true)
 	{
 		char status[][40] = { "Da Xoa Thanh Cong", "Nhan [ENTER] De Quay Lai" };
-		statusreturnMenu(status, 45);
+		statusreturnMenu(status, 20);
 		_getch();
 		menuEmployee(list_employee, numberEmployee);
 	}
 	else
 	{
 		char status[][40] = { "Khong Tim Thay Ma", "Nhan [ENTER] De Quay Lai" };
-		statusreturnMenu(status, 45);
+		statusreturnMenu(status, 20);
 		_getch();
 		menuEmployee(list_employee, numberEmployee);
 	}

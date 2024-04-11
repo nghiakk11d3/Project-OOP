@@ -1,4 +1,4 @@
-﻿#ifndef USER
+#ifndef USER
 #define USER
 #define _CRT_NONSTDC_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
@@ -11,7 +11,7 @@ public:
     char MailUser[30];
     char ID[15];
     char Shift[15];
-    char Day[15];      
+    char Day[15];
 };
 
 #endif

@@ -17,6 +17,8 @@
 #include <io.h>
 #include <fcntl.h>
 #include <fstream>
+#include <sstream>
+
 #define KEY_NONE -1
 using namespace std;
 int x = 61;
@@ -26,12 +28,14 @@ int high = 2;
 int t_color = 11;
 int b_color = 1;
 int b_color_sang = 60;
-int lengPro[] = { 15, 30, 14, 12, 20, 20, 14, 16, 12, 12 };
+int lengPro[] = { 15, 25, 14, 12, 20, 20, 14, 10, 23, 12 };
 char Header[][40] = { "Ma", "Ten San Pham", "Gioi Tinh", "Kich Co", "Loai", "Ngay Nhap", "Chat Lieu", "Gia", "Mo Ta", "Kho" };
 char HeaderCus1[][40] = { "Ma SP", "Ten San Pham", "Kich Co", "So Luong", "Gia San Pham", "Tong Gia", "Ngay Mua" };
 char HeaderCus[][40] = { "SDT", "Ten Khach Hang", "Gioi Tinh" };
 int lengCus1[] = { 15, 30, 10, 12, 16, 16, 15 };
 int lengCus[] = { 12, 25, 14 };
+char HeaderEmp[][40] = { "Ma Nhan Vien","Ten Nhan Vien","So Dien Thoai","Mail","Ca Lam","Ngay Lam" };
+int lengEmp[] = { 17,25,17,25,10,15 };
 void Tao1Hop(int x, int y, int width, int high, int t_color, int b_color, string nd);
 void TaoBangHeader(int number, int xp, int y, string nd, int lengPro[], char Header[][40], int sl);
 void thanh_sang(int x, int y, int width, int high, int b_color, string nd);
@@ -130,6 +134,7 @@ void NhieuHopKTen(int x, int y, int width, int high, int t_color, int b_color, i
 		HopKTen(x, y + (2 * i), width, high, t_color, b_color);
 		if (i != 0)
 		{
+			SetColor(11);
 			gotoXY(x, y + (2 * i));
 			cout << char(195);
 			gotoXY(x + width, y + (2 * i));
@@ -190,6 +195,7 @@ void TaoBangHeader(int number, int xp, int y, string nd, int lengPro[], char Hea
 	gotoXY(xp + len, y + 2);
 	cout << char(180);
 	len = 0;
+
 	for (int i = 0; i < number + 2; i++)
 	{
 		int len1 = 0;
@@ -293,6 +299,7 @@ void taomenuYeuCau(char nameHead[][40], char searchName[40])
 	SetColor(7);
 	ShowCur(1);
 	gotoXY(4 + 1 + (165 - strlen(nameHead[1])) / 2 + strlen(nameHead[1]), 3);
+
 	cin.getline(searchName, 20);
 	ShowCur(0);
 }
@@ -300,9 +307,9 @@ void statusreturnMenu(char status[][40], int vitri)
 {
 	gotoXY(4 + 1 + (165 - strlen(status[0])) / 2, vitri);
 	cout << status[0];
-	gotoXY(4 + 1 + (165 - strlen(status[1])) / 2, vitri+2);
+	gotoXY(4 + 1 + (165 - strlen(status[1])) / 2, vitri + 2);
 	cout << status[1];
-	
+
 }
 
 void swap(int& a, int& b)
@@ -431,7 +438,9 @@ void TaoBangCustomer(int numProduct, int numberCustomer, int numProinCus[])
 	TaoBangHeader(numProduct, 55, 0, "Danh San Pham", lengCus1, HeaderCus1, 7);
 	TaoBangCus(numberCustomer, 4, 0, "Khach Hang", lengCus, HeaderCus, 3, numProinCus, numProduct);
 }
-int MenuDong(string NameOBJ, char  nameHead[][40],int  Soluong) {
+int MenuDong(string NameOBJ, char  nameHead[][40], int  Soluong) {
+	TextColor(1);
+	system("cls");
 	vemenu(NameOBJ, nameHead, x, y, width, Soluong);
 	int xp = x;
 	int yp = y;

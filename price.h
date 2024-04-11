@@ -8,20 +8,20 @@
 class Price
 {
 public:
-    int priceProduct;
-    int finallyPrice;
-    char Discount[10];
+	int priceProduct;
+	int finallyPrice;
+	char Discount[10];
 
-    // Phương thức
-    void setpriceProduct(int price)
-    {
-        this->priceProduct = price;
-    }
+	// Phương thức
+	void setpriceProduct(int price)
+	{
+		this->priceProduct = price;
+	}
 
-    void setfinallyPrice(int price)
-    {
-        this->finallyPrice = price;
-    }
+	void setfinallyPrice(int price)
+	{
+		this->finallyPrice = price;
+	}
 };
 
 #endif

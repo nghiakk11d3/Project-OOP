@@ -1,27 +1,31 @@
 Customer Phone Number1,Customer Name,Gender,Purchased Product ID,Purchased Product Name,Size,Quantity,Price 1 Product,Discount,Finally Price,Purchased Date1
-377129318,Minh Thien,Male,MSH001,Classic Shirt,M,2,30,10,54,1/4/2024
+377129318,Minh Thien,Male,MSH001,Classic Shirt,M,2,30,10,54,01/04/2024
 
-,,,MPT003,Slim Fit Jeans,L,1,30,20,24,1/4/2024
+,,,MPT003,Slim Fit Jeans,L,1,30,20,24,01/04/2024
 
-,,,FBL004,Silk Blouse,XS,2,45,10,81,1/4/2024
+,,,FBL004,Silk Blouse,XS,2,45,10,81,01/04/2024
 
-,,,UNS005,High Top Sneakers,XL,2,60,20,96,1/4/2024
+,,,UNS005,High Top Sneakers,XL,2,60,20,96,01/04/2024
 
-,,,MJT006,Leather Biker Jacket,L,1,120,0,120,1/4/2024
+,,,MJT006,Leather Biker Jacket,L,1,120,0,120,01/04/2024
 
-123567459,Huu Nghia,Male,FCD012,Knit Cardigan,M,1,50,30,35,4/5/2024
+377123918,Tran Huu Nghia,Male,FCD012,Knit Cardigan,M,1,50,30,35,04/05/2024
 
-,,,MSW013,Crewneck Sweater,L,1,30,20,24,4/5/2024
+,,,MSW013,Crewneck Sweater,L,1,30,20,24,04/05/2024
 
-,,,FLG014,High-Waisted Legging,S,1,30,50,15,4/5/2024
+,,,FLG014,High-Waisted Legging,S,1,30,50,15,04/05/2024
 
-,,,UHT015,Baseball Cap,M,1,20,50,10,4/5/2024
+,,,UHT015,Baseball Cap,M,1,20,50,10,04/05/2024
 
-,,,MTI016,Silk Necktie,XS,1,35,20,28,4/5/2024
+,,,MTI016,Silk Necktie,XS,1,35,20,28,04/05/2024
 
-235789168,Ngoc Hung,Male,MTI016,Silk Necktie,XS,1,35,20,28,4/8/2024
+235789168,Ngoc Hung,Male,MTI016,Silk Necktie,XS,1,35,20,28,04/08/2024
 
-,,,FSC017,Cashmere Scarf,XL,2,60,20,96,4/8/2024
+,,,FSC017,Cashmere Scarf,XL,2,60,20,96,04/08/2024
 
-,,,MSK019,Cotton Dress Socks,S,1,10,100,0,4/8/2024
+,,,MSK019,Cotton Dress Socks,S,1,10,100,0,04/08/2024
+
+25042024,Chieu Bao,Male,UNS005,High Top Sneakers,XL,2,60,20,96,07/04/2024
+
+,,,MJT006,Leather Biker Jacket,L,1,120,0,120,07/04/2024
 
