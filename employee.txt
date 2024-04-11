@@ -1,0 +1,4 @@
+ID,Name,Phone,Mail,Shift,Day
+Nv01,Minh Thien,123456780,thien@gmail.com,2,2
+Nv02,Ngoc Hung,123456789,hung@gmail.com,1,1
+Nv03,Chieu Bao,234567890,bao@gmail.com,1,1

@@ -1,19 +1,13 @@
 Gender,Type,ProductID,ProductName,Size,Material,Price,Quanlity,Description,Addeddate
-Male,Shirt,MSH001,Classic Shirt,M,Cotton,30,50,Basic shirt,2024-04-11
-
-Female,Dress,FDR002,Floral Maxi Dress,S,Chiffon,30,30,Elegant dress,2024-04-11
-
 Male,Pants,MPT003,Slim Fit Jeans,32,Denim,30,40,Trendy jeans,2024-04-10
 
-Female,Blouse,FBL004,Silk Blouse,XS,Silk,45,25,Luxurious blouse,2024-04-10
+54,45,45,345,45,54,345,45,45,11/04/2024
 
 Unisex,Sneakers,UNS005,High Top Sneakers,9,Canvas,60,20,Versatile sneakers,2024-04-09
 
 Male,Jacket,MJT006,Leather Biker Jacket,L,Leather,120,15,Stylish jacket,2024-04-09
 
 Female,Skirt,FSK007,Pleated Midi Skirt,M,Polyester,35,35,Flattering skirt,2024-04-08
-
-Male,T-Shirt,MTV008,Graphic Print T-Shir,XL,Cotton,25,60,Trendy t-shirt,2024-04-08
 
 Female,Jumpsuit,FJP009,Denim Jumpsuit,S,Denim,55,20,Trendy jumpsuit,2024-04-07
 
@@ -27,11 +21,9 @@ Female,Leggings,FLG014,High-Waisted Legging,S,Spandex,30,50,Stretchy leggings,20
 
 Unisex,Hat,UHT015,Baseball Cap,N/A,Cotton,20,50,Stylish cap,2024-04-04
 
-Male,Tie,MTI016,Silk Necktie,N/A,Silk,35,30,Elegant tie,2024-04-04
+342,234,12,12234,342323234,234,23432,324,34,11/04/2024
 
 Female,Scarf,FSC017,Cashmere Scarf,N/A,Cashmere,60,20,Luxurious scarf,2024-04-03
-
-Male,Socks,MSK019,Cotton Dress Socks,10,Cotton,10,100,Comfortable socks,2024-04-02
 
 Female,Handbag,FHB020,Leather Tote Bag,N/A,Leather,80,15,Stylish tote,2024-04-02
 
@@ -39,3 +31,18 @@ Male,Socks,MSK019,Cotton Dress Socks,10,Cotton,90,100,Comfortable socks,2024-04-
 
 Female,Handbag,FHB020,Leather Tote Bag,N/A,Leather,20,15,Stylish tote,2024-04-02
 
+Female,Handbag,FHB020,Leather Tote Bag,N/A,Leather,20,15,Stylish tote,2024-04-02
+
+Female,Handbag,FHB020,Leather Tote Bag,N/A,Leather,20,15,Stylish tote,2024-04-02
+
+23,23,23,32,23,23,23,23,23,11/04/2024
+
+23,23,23,32,23,23,23,23,23,11/04/2024
+
+23,23,23,32,23,23,23,23,23,11/04/2024
+
+23,23,23,32,23,23,23,23,23,11/04/2024
+
+23,32,23,23,23,23,23,11/04/2024
+
+32,23,23,23,23,23,11/04/2024
