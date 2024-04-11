@@ -1,49 +1,55 @@
 Customer Phone Number1,Customer Name,Gender,Purchased Product ID,Purchased Product Name,Size,Quantity,Price 1 Product,Discount,Finally Price,Purchased Date1
-123567458,Nguyen Minh Thien,Male,2407,black jeans,XL,2,550000,C,1045000,29-03-24
+377129318,Minh Thien,Male,MSH001,Classic Shirt,M,2,30,10,54,1/4/2024
 
-,,,2007,Blue vest,L,1,750000,C,712500,29-03-24
+,,,MPT003,Slim Fit Jeans,L,1,30,20,24,1/4/2024
 
-,,,2103,graphic t- shirt,XL,2,350000,C,665000,29-03-24
+,,,FBL004,Silk Blouse,XS,2,45,10,81,1/4/2024
 
-,,,2007,Blue vest,L,1,750000,C,712500,29-03-24
+,,,UNS005,High Top Sneakers,XL,2,60,20,96,1/4/2024
 
-,,,2103,graphic t- shirt,XL,2,350000,C,665000,29-03-24
+,,,MJT006,Leather Biker Jacket,L,1,120,0,120,1/4/2024
 
-,,,2007,Blue vest,L,1,750000,C,712500,29-03-24
+123567459,Huu Nghia,Male,FCD012,Knit Cardigan,M,1,50,30,35,4/5/2024
 
-,,,2103,graphic t- shirt,XL,2,350000,C,665000,29-03-24
+,,,MSW013,Crewneck Sweater,L,1,30,20,24,4/5/2024
 
-123567459,Nguyen Minh Thien,Male,2300,black polo,XL,3,250000,C,712500,29-03-24
+,,,FLG014,High-Waisted Legging,S,1,30,50,15,4/5/2024
 
-,,,2007,Blue vest,L,1,750000,C,712500,29-03-24
+,,,UHT015,Baseball Cap,M,1,20,50,10,4/5/2024
 
-,,,2103,graphic t- shirt,XL,2,350000,C,665000,29-03-24
+,,,MTI016,Silk Necktie,XS,1,35,20,28,4/5/2024
 
-235789168,Nguyen Ngoc Hung,Male,2202,active paints,L,3,550000,C,1567500,30-03-24
+235789168,Ngoc Hung,Male,MTI016,Silk Necktie,XS,1,35,20,28,4/8/2024
 
-235789169,Nguyen Ngoc Hung,Male,2307,beige polo,XL,1,200000,C,190000,31-03-24
+,,,FSC017,Cashmere Scarf,XL,2,60,20,96,4/8/2024
 
-235789170,Nguyen Ngoc Hung,Male,2402,blue jeans,XL,1,550000,A,467500,01-04-24
+,,,MSK019,Cotton Dress Socks,S,1,10,100,0,4/8/2024
 
-745332464,Tran Huu Nghia,Male,2107,white t-shirt,XL,2,15000000,C,28500000,02-04-24
+,,,FHB020,Leather Tote Bag,M,3,80,15,204,4/8/2024
 
-745332465,Tran Huu Nghia,Male,2407,black jeans,S,4,950000,B,3420000,03-04-24
+,,,MSK019,Cotton Dress Socks,XL,4,90,10,324,4/8/2024
 
-745332466,Tran Huu Nghia,Male,2003,Caro vest,L,2,750000,C,1425000,04-04-24
+,,,FHB020,Leather Tote Bag,S,2,20,15,34,4/8/2024
 
-463226763,Nguyen Mai Hoa,Female,1204,Vintage sweater,S,4,150000,C,570000,05-04-24
+745332464,Minh Thien,Male,FCD012,Knit Cardigan,M,1,50,30,35,4/9/2024
 
-463226764,Nguyen Mai Hoa,Female,1102,Midi skirts,M,2,150000,C,285000,06-04-24
+745332465,Chieu Bao,Male,FHB020,Leather Tote Bag,M,3,80,15,204,4/8/2024
 
-245636347,Nguyen Chieu Bao,Male,2108,simple t-shirt,L,1,150000,C,142500,07-04-24
+745332466,Tran Huu Nghia,Male,MSW013,Crewneck Sweater,L,1,45,20,36,4/5/2024
 
-245636348,Nguyen Chieu Bao,Male,2109,simple t-shirt,S,1,1350000,B,1215000,08-04-24
+463226763,Nguyen Mai Hoa,Female,FSC017,Cashmere Scarf,XL,1,60,20,48,4/2/2024
 
-245636349,Nguyen Chieu Bao,Male,2110,simple t-shirt,M,1,760000,A,646000,09-04-24
+,,,MSK019,Cotton Dress Socks,S,2,10,100,0,4/2/2024
 
-446242625,Ha Phuong Trang,Female,1004,Maxi dresses,L,3,350000,C,997500,10-04-24
+,,,FHB020,Leather Tote Bag,M,1,80,15,68,4/2/2024
 
-446242626,Ha Phuong Trang,Female,1104,Pencil skirts,M,2,250000,B,450000,11-04-24
+,,,MSK019,Cotton Dress Socks,XL,2,90,100,0,4/2/2024
 
-446242627,Ha Phuong Trang,Female,2302,black polo,M,2,550000,C,1045000,12-04-24
+245636349,Nguyen Chieu Bao,Male,FHB020,Leather Tote Bag,S,2,20,15,34,4/2/2024
+
+446242625,Ha Phuong Trang,Female,FBL004,Silk Blouse,XS,1,45,20,36,4/10/2024
+
+446242626,Ha Phuong Trang,Female,UNS005,High Top Sneakers,XL,1,60,20,48,4/9/2024
+
+446242627,Ha Phuong Trang,Female,MJT006,Leather Biker Jacket,L,1,120,15,102,4/9/2024
 
