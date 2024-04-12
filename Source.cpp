@@ -10,7 +10,7 @@
 #include "ProductFunc.h"
 #include "CustomerFunc.h"
 #include "tranfer_string.h"
-#include "UserName.h"
+
 
 
 using namespace std;
@@ -68,8 +68,8 @@ int read_data_customer(Customer list_customer[], FILE* file_customer)
 			num_customer++;
 			num_product = 0;
 			/*Thong tin khach hang*/
-			list_customer[num_customer].set_phonenumber(field_customer[0]);
-			list_customer[num_customer].set_name(field_customer[1]);
+			list_customer[num_customer].Person::setphoneNumber(field_customer[0]);
+			list_customer[num_customer].Person::setName(field_customer[1]);
 			list_customer[num_customer].set_gender(field_customer[2]);
 
 			/*Thong tin san pham*/
@@ -182,8 +182,8 @@ void write_data_customer(Customer list_customer[], int& number_customer, int num
 	{
 
 
-		write_file_customer << list_customer[i].get_phone() << ","
-			<< list_customer[i].get_name() << ","
+		write_file_customer << list_customer[i].Person::getphoneNumber() << ","
+			<< list_customer[i].Person::getName() << ","
 			<< list_customer[i].get_gender() << ","
 			<< list_customer[i].list_product[0].ProductID << ","
 			<< list_customer[i].list_product[0].ProductName << ","
@@ -287,12 +287,12 @@ int read_data_employee(Employee list_employee[])
 
 		if (field_count == 6)
 		{
-			strcpy(list_employee[num_employee].ID, field[0]);
-			strcpy(list_employee[num_employee].NameUser, field[1]);
-			strcpy(list_employee[num_employee].PhoneUser, field[2]);
-			strcpy(list_employee[num_employee].MailUser, field[3]);
-			strcpy(list_employee[num_employee].Shift, field[4]);
-			strcpy(list_employee[num_employee].Day, field[5]);
+			(list_employee[num_employee].setID( field[0]));
+			(list_employee[num_employee].setName( field[1]));
+			(list_employee[num_employee].setphoneNumber( field[2]));
+			list_employee[num_employee].setMail( field[3]);
+			list_employee[num_employee].setShift( field[4]);
+			list_employee[num_employee].setDay( field[5]);
 			num_employee++;
 		}
 	}
@@ -323,12 +323,12 @@ void write_data_employee(Employee list_employee[], int num_list_employee)
 		// Ghi dữ liệu của từng nhân viên vào file
 		for (int i = 0; i < num_list_employee; i++)
 		{
-			write_file << list_employee[i].ID << ","
-				<< list_employee[i].NameUser << ","
-				<< list_employee[i].PhoneUser << ","
-				<< list_employee[i].MailUser << ","
-				<< list_employee[i].Shift << ","
-				<< list_employee[i].Day << endl;
+			write_file << list_employee[i].getID() << ","
+				<< list_employee[i].getName() << ","
+				<< list_employee[i].getphoneNumber() << ","
+				<< list_employee[i].getMail() << ","
+				<< list_employee[i].getShift() << ","
+				<< list_employee[i].getDay() << endl;
 		}
 
 		cout << "Ghi du lieu thanh cong" << endl;
@@ -394,15 +394,15 @@ void Customer::menuStore(Product list_product[], int& number, Customer list_cust
 	switch (Choice)
 	{
 	case 0:
-		menuProduct(list_product, number);
+		list_product->menuProduct(list_product, number);
 		menuStore(list_product, number, list_customer, numberCustomer, list_employee, numberEmployee);
 		break;
 	case 1:
-		menuCustomer(list_product, number, list_customer, numberCustomer);
+		list_customer->menuCustomer(list_product, number, list_customer, numberCustomer);
 		menuStore(list_product, number, list_customer, numberCustomer, list_employee, numberEmployee);		
 		break;
 	case 2:
-		menuEmployee(list_employee, numberEmployee);
+		list_employee->menuEmployee(list_employee, numberEmployee);
 		menuStore(list_product, number, list_customer, numberCustomer, list_employee, numberEmployee);
 		break;
 

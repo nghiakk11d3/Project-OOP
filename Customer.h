@@ -7,27 +7,17 @@
 #include "product.h"
 #include "tranfer_string.h"
 #include "Employee.h"
-
+#include "Person.h"
 // class Customer
-class Customer : public Product, public Employee
+class Customer : public Person,public Employee
 {
 private:
-    char phonenumber[11];
-    char name[30];
     char gender[10];
     char purchasedate[11];
 
 public:
-    Product* list_product = new Product[100];
 
-    void set_phonenumber(char* field_customer)
-    {
-        strcpy(this->phonenumber, field_customer);
-    }
-    void set_name(char* field_customer)
-    {
-        strcpy(this->name, field_customer);
-    }
+    Product list_product[100];
     void set_gender(char* field_customer)
     {
         strcpy(this->gender, field_customer);
@@ -74,15 +64,7 @@ public:
         return finallyPrice;
     }
 
-    char* get_name()
-    {
-        return this->name;
-    }
-
-    char* get_phone()
-    {
-        return this->phonenumber;
-    }
+  
 
     char* get_gender()
     {
@@ -98,13 +80,13 @@ public:
     void editCustomer(Customer list_customer[], int& numberCustomer);
     void printlistCustomer(Customer list_customer[], int numberCustomer);
     void printSingleCustomer(Customer customer, int x, int y, int leny, int numProinCus);
-    void menuStore(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, Employee list_employee[], int& numberEmployee);
     void menuCustomer(Product list_product[], int& number, Customer list_customer[], int& numberCustomer);
     void addCustomer(Product list_product[], int& number, Customer list_customer[], int& numberCustomer);
     void getnumProinCus(int numProinCus[], int& numProduct, Customer list_customer[], int numberCustomer);
     void printBill(Product list_product[], int& number, Customer list_customer[], int& numberCustomer);
     void enterProinCus(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, int SoluongThem);
     friend void menuEmployee(Employee list_employee, int& numberEmployee);
+    void menuStore(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, Employee list_employee[], int& numberEmployee);
 };
 
 #endif

@@ -4,14 +4,44 @@
 
 #define _CRT_NONSTDC_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
-#include "UserName.h"
+#include "Person.h"
+#include "Customer.h"
 #include <iostream>
 #include <ctime>
 
 using namespace std;
-class Employee :public UserName {
+class Employee :public Person {	
+private:
+	char Mail[30];
+	char ID[15];
+	char Shift[15];
+	char Day[15];
 public:
-
+	
+	char* getMail() {
+		return this->Mail;
+	}
+	char* getID() {
+		return this->ID;
+	}
+	char* getShift() {
+		return this->Shift;
+	}
+	char* getDay() {
+		return this->Day;
+	}
+	void setMail(const char* mail) {
+		strcpy(this->Mail, mail);
+	}
+	void setID(const char* id) {
+		strcpy(this->ID, id);
+	}
+	void setShift(const char* shift) {
+		strcpy(this->Shift, shift);
+	}
+	void setDay(const char* day) {
+		strcpy(this->Day, day);
+	}
 
 	int returnEmployee(Employee list_employee[], int numberEmployee, char searchAcc[]);
 	void InputEmp();
@@ -21,6 +51,7 @@ public:
 	void menuEmployee(Employee list_employee[], int& numberEmployee);
 	void editEmployee(Employee list_employee[], int& numberEmployee);
 	void deleteEmployee(Employee list_employee[], int& numberEmployee);
+	
 	void statusReturn1line1(int numProduct)
 	{
 		char Return[] = { "Nhan [ENTER] De Quay Quay Lai" };
@@ -49,6 +80,8 @@ void Employee::InputEmp() {
 	int x1 = 90;
 	int high = 16;
 	int width = 25;
+	char name[25];
+	char phone[11];
 	y = 10;
 	ShowCur(1);
 	HopKTen(x, y, width, high, 11, 1);
@@ -62,15 +95,17 @@ void Employee::InputEmp() {
 	cout << "Ten Nhan Vien:";
 	gotoXY(x1, y + 3);
 	cin.ignore();
-	cin.getline(this->NameUser, 20);
+	cin.getline(name, 20);
+	Person::setName(name);
 	gotoXY(x0, y + 5);
 	cout << "So Dien Thoai:";
 	gotoXY(x1, y + 5);
-	cin >> (this->PhoneUser);
+	cin >> (phone);
+	setphoneNumber(phone);
 	gotoXY(x0, y + 7);
 	cout << "Mail:";
 	gotoXY(x1, y + 7);
-	cin >> (this->MailUser);
+	cin >> (this->Mail);
 	gotoXY(x0, y + 9);
 	cout << "Ca Lam:";
 	gotoXY(x1, y + 9);
@@ -111,13 +146,13 @@ void Employee::print1Emp(Employee employee, int x, int y, int i) {
 	cout << employee.ID;
 	x_width += lengEmp[0];
 	gotoXY(x + x_width, y + 2 * i + 1);
-	cout << employee.NameUser;
+	cout << employee.getName();
 	x_width += lengEmp[1];
 	gotoXY(x + x_width, y + 2 * i + 1);
-	cout << employee.PhoneUser;
+	cout << employee.getphoneNumber();
 	x_width += lengEmp[2];
 	gotoXY(x + x_width, y + 2 * i + 1);
-	cout << employee.MailUser;
+	cout << employee.Mail;
 	x_width += lengEmp[3];
 	gotoXY(x + x_width, y + 2 * i + 1);
 	cout << employee.Shift;

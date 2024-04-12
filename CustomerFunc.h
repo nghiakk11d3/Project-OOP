@@ -36,9 +36,9 @@ void Customer::printSingleCustomer(Customer customer, int x, int y, int leny, in
 {
 	x++;
 	gotoXY(x + 1, y + 1 + leny);
-	cout << customer.phonenumber;
+	cout << customer.Person::getphoneNumber();;
 	gotoXY(x + 1 + lengCus[0], y + 1 + leny);
-	cout << customer.name;
+	cout << customer.Person::getName();
 	gotoXY(x + 1 + lengCus[0] + lengCus[1], y + 1 + leny);
 	cout << customer.gender;
 	for (int j = 0; j < numProinCus; j++)
@@ -72,7 +72,7 @@ void Customer::printlistCustomer(Customer list_customer[], int numberCustomer)
 		list_customer->printSingleCustomer(list_customer[i], 4, 4, leny, numProinCus[i]);
 		leny += numProinCus[i] * 2;
 	}
-	statusReturn1line(numProduct - 2);
+	list_product->statusReturn1line(numProduct - 2);
 
 }
 
@@ -83,6 +83,8 @@ void Customer::enterCustomer()
 	int x1 = 91;
 	int high = 10;
 	int width = 25;
+	char phone[11];
+	char name[25];
 	ShowCur(1);
 	HopKTen(x, y, width, high, 11, 1);
 	HopKTen(x + 26, y, width, high, 11, 1);
@@ -90,12 +92,14 @@ void Customer::enterCustomer()
 	gotoXY(x0, y + 1);
 	cout << "So Dien Thoai:";
 	gotoXY(x1, y + 1);
-	cin >> this->phonenumber;
+	cin >> phone;
+	Person::setphoneNumber(phone);
 	gotoXY(x0, y + 3);
 	cout << "Ten Khach Hang:";
 	gotoXY(x1, y + 3);
 	cin.ignore();
-	cin.getline(this->name, 30);
+	cin.getline(name, 30);
+	Person::setName(name);
 	gotoXY(x0, y + 5);
 	cout << "Gioi Tinh:";
 	gotoXY(x1, y + 5);
@@ -118,7 +122,7 @@ void Customer::editCustomer(Customer list_customer[], int& numberCustomer)
 	int Index[20];
 	for (int i = 0; i < numberCustomer; i++)
 	{
-		if (strcmp(searchPhoneCustomer, list_customer[i].phonenumber) == 0)
+		if (strcmp(searchPhoneCustomer, list_customer[i].Person::getphoneNumber()) == 0)
 		{
 			Index[Soluong] = i;
 			Soluong++;
@@ -162,7 +166,7 @@ void Customer::enterProinCus(Product list_product[], int& number, Customer list_
 		cout << "Ma San Pham:";
 		gotoXY(x1, y + 1);
 		cin >> list_customer[numberCustomer].list_product[i].ProductID;
-		int indexi = returnProduct(list_product, number, list_customer[numberCustomer].list_product[i].ProductID);
+		int indexi = list_product->returnProduct(list_product, number, list_customer[numberCustomer].list_product[i].ProductID);
 		gotoXY(x0, y + 3);
 		cout << "Kich Co:";
 		gotoXY(x1, y + 3);
@@ -265,7 +269,7 @@ void Customer::printBill(Product list_product[], int& number, Customer list_cust
 	gotoXY(62, 17);
 	cout << date;
 	char customer_name[30] = { "BILLED TO " };
-	strcat(customer_name, inHoaChuoi(list_customer[numberCustomer].name));
+	strcat(customer_name, inHoaChuoi(list_customer[numberCustomer].Person::getName()));
 	gotoXY(111 - strlen(customer_name), 15);
 	cout << customer_name;
 	char address[30] = { "DONG HOA, DI AN, BINH DUONG" };
