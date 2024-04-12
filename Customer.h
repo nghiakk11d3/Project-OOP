@@ -9,15 +9,15 @@
 #include "Employee.h"
 #include "Person.h"
 // class Customer
-class Customer : public Person,public Employee
+class Customer : public Person
 {
 private:
     char gender[10];
     char purchasedate[11];
 
 public:
-
-    Product list_product[100];
+    friend class Employee;
+    Product *list_pproduct=new Product[100];
     void set_gender(char* field_customer)
     {
         strcpy(this->gender, field_customer);
