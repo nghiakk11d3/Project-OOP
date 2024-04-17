@@ -1,5 +1,5 @@
-#ifndef CUSTOMER
-#define CUSTOMER
+#ifndef __CUSTOMER__
+#define __CUSTOMER__
 
 #define _CRT_NONSTDC_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
@@ -17,7 +17,8 @@ private:
 
 public:
     friend class Employee;
-    Product *list_pproduct=new Product[100];
+
+    Product* list_pproduct = new Product[100];
     void set_gender(char* field_customer)
     {
         strcpy(this->gender, field_customer);
@@ -64,8 +65,6 @@ public:
         return finallyPrice;
     }
 
-  
-
     char* get_gender()
     {
         return this->gender;
@@ -85,7 +84,7 @@ public:
     void getnumProinCus(int numProinCus[], int& numProduct, Customer list_customer[], int numberCustomer);
     void printBill(Product list_product[], int& number, Customer list_customer[], int& numberCustomer);
     void enterProinCus(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, int SoluongThem);
-    friend void menuEmployee(Employee list_employee, int& numberEmployee);
+    friend void menuEmployee(Employee list_employee, int& num_employee);
     void menuStore(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, Employee list_employee[], int& numberEmployee);
 };
 

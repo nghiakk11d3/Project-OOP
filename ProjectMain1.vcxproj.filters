@@ -39,7 +39,13 @@
     <ClInclude Include="tranfer_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="UserName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="handle_file.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

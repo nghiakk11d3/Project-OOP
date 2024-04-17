@@ -1,10 +1,11 @@
-#ifndef USER
-#define USER
+#ifndef __USER__
+#define __USER__
 #define _CRT_NONSTDC_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstring>
 
-class UserName {
+class UserName
+{
 public:
     char NameUser[20];
     char PhoneUser[11];

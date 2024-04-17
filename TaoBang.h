@@ -1,6 +1,6 @@
-﻿#pragma once
-#define _CRT_NONSTDC_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
+﻿#ifndef __TAO_BANG__
+#define __TAO_BANG__
+
 #include <iostream>
 #include <stdio.h>
 #include <windows.h>
@@ -21,47 +21,41 @@
 
 #define KEY_NONE -1
 using namespace std;
-int x = 61;
-int y = 10;
-int width = 50;
-int high = 2;
-int t_color = 11;
-int b_color = 1;
-int b_color_sang = 60;
+int x = 61, y = 10, width = 50, high = 2, t_color = 11, b_color = 1, b_color_sang = 60;
 int lengPro[] = { 15, 25, 14, 12, 20, 20, 14, 10, 23, 12 };
 char Header[][40] = { "Ma", "Ten San Pham", "Gioi Tinh", "Kich Co", "Loai", "Ngay Nhap", "Chat Lieu", "Gia", "Mo Ta", "Kho" };
 char HeaderCus1[][40] = { "Ma SP", "Ten San Pham", "Kich Co", "So Luong", "Gia San Pham", "Tong Gia", "Ngay Mua" };
 char HeaderCus[][40] = { "SDT", "Ten Khach Hang", "Gioi Tinh" };
 int lengCus1[] = { 15, 30, 10, 12, 16, 16, 15 };
 int lengCus[] = { 12, 25, 14 };
-char HeaderEmp[][40] = { "Ma Nhan Vien","Ten Nhan Vien","So Dien Thoai","Mail","Ca Lam","Ngay Lam" };
-int lengEmp[] = { 17,25,17,25,10,15 };
-void Tao1Hop(int x, int y, int width, int high, int t_color, int b_color, string nd);
-void TaoBangHeader(int number, int xp, int y, string nd, int lengPro[], char Header[][40], int sl);
-void thanh_sang(int x, int y, int width, int high, int b_color, string nd);
-void vemenu(string nameOBJ, char ele[][40], int x, int y, int width, int sl);
-void NhieuHop(int x, int y, int width, int h, int t_color, int b_color, char nd[][40], int n);
-void taomenuYeuCau(char nameHead[][40], char searchName[40]);
-void HopKTen(int x, int y, int width, int high, int t_color, int b_color); // HopkTen
-void gotoXY(int x, int y);
-void SetColor(WORD color);
-void ShowCur(bool CursorVisibility);
-void statusreturnMenu(char status[][40], int vitri);
-char* getTime(char a[11]);
-void NhieuHopKTen(int x, int y, int width, int high, int t_color, int b_color, int n);
-int tranfer_string(char string[]);
-void swap(int& a, int& b);
-void TaoBangCus(int number, int xp, int y, string nd, int lengPro[], char Header[][40], int sl, int a[], int numProduct);
-void TaoBangCustomer(int numProduct, int numberCustomer, int numProinCus[]);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+char HeaderEmp[][40] = { "Ma Nhan Vien", "Ten Nhan Vien", "So Dien Thoai", "Mail", "Ca Lam", "Ngay Lam" };
+int lengEmp[] = { 17, 25, 17, 25, 10, 15 };
 
-void gotoXY(int x, int y)
+/* ------------ HÀM ĐIỀU KHIỂN CON TRỎ CONSOLE-----------------*/
+void ShowCur(bool CursorVisibility)
 {
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cursor = { 1, CursorVisibility };
+	SetConsoleCursorInfo(handle, &cursor);
+}
+
+/*----------- CÁC HÀM THIẾT LẬP TỌA ĐỘ CHO GIAO DIỆN------------*/
+void gotoXY(short x, short y)
+{
+
 	HANDLE hConsoleOutput;
 	COORD Cursor_an_Pos = { x, y };
 	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
 }
+
+/*-------------------CÁC HÀM TẠO MÀU CHO GIAO DIỆN--------------*/
+void TextColor(int code_color)
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, code_color);
+}
+
 void SetColor(WORD color)
 {
 	HANDLE hConsoleOutput;
@@ -77,18 +71,74 @@ void SetColor(WORD color)
 
 	SetConsoleTextAttribute(hConsoleOutput, wAttributes);
 }
-void ShowCur(bool CursorVisibility)
+
+/*---------- HÀM TẠO THANH SÁNG CHO GIAO DIỆN--------------------*/
+void thanh_sang(int x, int y, int width, int high, int b_color, string nd)
 {
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO cursor = { 1, CursorVisibility };
-	SetConsoleCursorInfo(handle, &cursor);
+
+	TextColor(b_color);
+	for (int iy = y + 1; iy <= y + high - 1; iy++)
+	{
+		for (int ix = x + 1; ix <= x + width - 1; ix++)
+		{
+			gotoXY(ix, iy);
+			cout << " ";
+		}
+	}
+	int m = (width - nd.length()) / 2;
+	// vẽ viền đè
+	SetColor(7);
+	gotoXY(x + 1 + m, y + 1);
+	cout << nd;
 }
-void TextColor(int x) // X là mã màu
+
+/*----------- HÀM TẠO CÁC KHUNG CHO DAO DIỆN ---------------------*/
+
+// 1. Hàm tạo một khung cho giao diện
+void Tao1Hop(int x, int y, int width, int high, int t_color, int b_color, string nd)
 {
-	// Các hàm này là hàm thao tác API với widthindowidths bạn cứ coppy thôi không cần phải hiểu quá sâu
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, x);
+	TextColor(b_color);
+	for (int iy = y + 1; iy <= y + high - 1; iy++)
+	{
+		for (int ix = x + 1; ix <= x + width - 1; ix++)
+		{
+			gotoXY(ix, iy);
+			cout << " ";
+		}
+	}
+	int m = (width - nd.length()) / 2;
+	SetColor(7);
+	gotoXY(x + 1 + m, y + 1);
+	cout << nd;
+	TextColor(1);
+	SetColor(t_color);
+	if (high <= 1 || width <= 1)
+		return;
+	for (int ix = x; ix <= x + width; ix++)
+	{
+		gotoXY(ix, y);
+		cout << char(196);
+		gotoXY(ix, y + high);
+		cout << char(196);
+	}
+	for (int iy = y; iy <= y + high; iy++)
+	{
+		gotoXY(x, iy);
+		cout << char(179);
+		gotoXY(x + width, iy);
+		cout << char(179);
+	}
+	gotoXY(x, y);
+	cout << char(218);
+	gotoXY(x + width, y);
+	cout << char(191);
+	gotoXY(x, y + high);
+	cout << char(192);
+	gotoXY(x + width, y + high);
+	cout << char(217);
 }
+
+// 2. Hàm tạo khung rỗng
 void HopKTen(int x, int y, int width, int high, int t_color, int b_color)
 {
 	TextColor(b_color);
@@ -127,6 +177,8 @@ void HopKTen(int x, int y, int width, int high, int t_color, int b_color)
 	cout << char(217);
 	SetColor(7);
 }
+
+// Hàm tọa nhiều khung rỗng
 void NhieuHopKTen(int x, int y, int width, int high, int t_color, int b_color, int n)
 {
 	for (int i = 0; i < n; i++)
@@ -142,8 +194,9 @@ void NhieuHopKTen(int x, int y, int width, int high, int t_color, int b_color, i
 		}
 	}
 }
+
 void NhieuHop(int x, int y, int width, int high, int t_color, int b_color, char nd[][40], int n)
-{ // nbox
+{
 
 	for (int i = 0; i < n; i++)
 	{
@@ -221,67 +274,7 @@ void TaoBangHeader(int number, int xp, int y, string nd, int lengPro[], char Hea
 		}
 	}
 }
-void Tao1Hop(int x, int y, int width, int high, int t_color, int b_color, string nd)
-{
-	TextColor(b_color);
-	for (int iy = y + 1; iy <= y + high - 1; iy++)
-	{
-		for (int ix = x + 1; ix <= x + width - 1; ix++)
-		{
-			gotoXY(ix, iy);
-			cout << " ";
-		}
-	}
-	int m = (width - nd.length()) / 2;
-	SetColor(7);
-	gotoXY(x + 1 + m, y + 1);
-	cout << nd;
-	TextColor(1);
-	SetColor(t_color);
-	if (high <= 1 || width <= 1)
-		return;
-	for (int ix = x; ix <= x + width; ix++)
-	{
-		gotoXY(ix, y);
-		cout << char(196);
-		gotoXY(ix, y + high);
-		cout << char(196);
-	}
-	for (int iy = y; iy <= y + high; iy++)
-	{
-		gotoXY(x, iy);
-		cout << char(179);
-		gotoXY(x + width, iy);
-		cout << char(179);
-	}
-	gotoXY(x, y);
-	cout << char(218);
-	gotoXY(x + width, y);
-	cout << char(191);
-	gotoXY(x, y + high);
-	cout << char(192);
-	gotoXY(x + width, y + high);
-	cout << char(217);
-}
 
-void thanh_sang(int x, int y, int width, int high, int b_color, string nd)
-{
-
-	TextColor(b_color);
-	for (int iy = y + 1; iy <= y + high - 1; iy++)
-	{
-		for (int ix = x + 1; ix <= x + width - 1; ix++)
-		{
-			gotoXY(ix, iy);
-			cout << " ";
-		}
-	}
-	int m = (width - nd.length()) / 2;
-	// vẽ viền đè
-	SetColor(7);
-	gotoXY(x + 1 + m, y + 1);
-	cout << nd;
-}
 char* getTime(char a[11])
 {
 	time_t baygio = time(0);
@@ -309,7 +302,6 @@ void statusreturnMenu(char status[][40], int vitri)
 	cout << status[0];
 	gotoXY(4 + 1 + (165 - strlen(status[1])) / 2, vitri + 2);
 	cout << status[1];
-
 }
 
 void swap(int& a, int& b)
@@ -318,7 +310,7 @@ void swap(int& a, int& b)
 	a = b;
 	b = t;
 }
-void TaoNHopNgang(int x, int y, int width, int high, int t_color, int b_color, int n)
+void TaoNHopNgang(int t_color, int b_color, int n)
 {
 	int len = 0;
 	for (int i = 0; i < n; i++)
@@ -363,9 +355,7 @@ void TaoBangCus(int number, int xp, int y, string nd, int lengPro[], char Header
 		l += lengPro[i];
 		cout << Header[i];
 	}
-	// gotoXY(xp, y + 2); cout << char(195);
-	// gotoXY(xp + lenx, y + 2); cout << char(180);
-	// lenx = 0;
+
 	leny = 2;
 	for (int i = 0; i < number; i++)
 	{
@@ -438,7 +428,8 @@ void TaoBangCustomer(int numProduct, int numberCustomer, int numProinCus[])
 	TaoBangHeader(numProduct, 55, 0, "Danh San Pham", lengCus1, HeaderCus1, 7);
 	TaoBangCus(numberCustomer, 4, 0, "Khach Hang", lengCus, HeaderCus, 3, numProinCus, numProduct);
 }
-int MenuDong(string NameOBJ, char  nameHead[][40], int  Soluong) {
+int MenuDong(string NameOBJ, char nameHead[][40], int Soluong)
+{
 	TextColor(1);
 	system("cls");
 	int y = 10;
@@ -498,3 +489,5 @@ int MenuDong(string NameOBJ, char  nameHead[][40], int  Soluong) {
 End:
 	return Choice1;
 }
+
+#endif

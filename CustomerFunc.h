@@ -17,13 +17,13 @@ char* inHoaChuoi(char* chuoi)
 	return chuoi;
 }
 
-int get_num_product(Customer list_customer[], int& num_customer, int i)
+int get_num_product(Customer list_customer[], int index)
 {
-
+										/*	LẤY SỐ LƯỢNG SẢN PHẨM CỦA MỘT KHÁCH HÀNG*/
 	int count = 0;
 	for (int j = 0; j < 100; j++)
 	{
-		if ((list_customer[i].list_product[j].Quantity) > 0)
+		if ((list_customer[index].list_product[j].Quantity) > 0)
 		{
 			count++;
 		}
@@ -34,9 +34,11 @@ int get_num_product(Customer list_customer[], int& num_customer, int i)
 
 void Customer::printSingleCustomer(Customer customer, int x, int y, int leny, int numProinCus)
 {
+																	/*	IN MỘT KHÁCH HÀNG*/
 	x++;
 	gotoXY(x + 1, y + 1 + leny);
-	cout << customer.Person::getphoneNumber();;
+	cout << customer.Person::getphoneNumber();
+	;
 	gotoXY(x + 1 + lengCus[0], y + 1 + leny);
 	cout << customer.Person::getName();
 	gotoXY(x + 1 + lengCus[0] + lengCus[1], y + 1 + leny);
@@ -52,9 +54,9 @@ void Customer::printSingleCustomer(Customer customer, int x, int y, int leny, in
 		gotoXY(55 + 2 + lengCus1[0] + lengCus1[1] + lengCus1[2], y + 1 + 2 * j + leny);
 		cout << customer.list_product[j].Quantity;
 		gotoXY(55 + 2 + lengCus1[0] + lengCus1[1] + lengCus1[2] + lengCus1[3], y + 1 + 2 * j + leny);
-		cout <<"$"<<customer.list_product[j].priceProduct;
+		cout << "$" << customer.list_product[j].priceProduct;
 		gotoXY(55 + 2 + lengCus1[0] + lengCus1[1] + lengCus1[2] + lengCus1[3] + lengCus1[4], y + 1 + 2 * j + leny);
-		cout <<"$"<< customer.list_product[j].finallyPrice;
+		cout << "$" << customer.list_product[j].finallyPrice;
 		gotoXY(55 + 2 + lengCus1[0] + lengCus1[1] + lengCus1[2] + lengCus1[3] + lengCus1[4] + lengCus1[5], y + 1 + 2 * j + leny);
 		cout << customer.purchasedate;
 	}
@@ -73,12 +75,11 @@ void Customer::printlistCustomer(Customer list_customer[], int numberCustomer)
 		leny += numProinCus[i] * 2;
 	}
 	list_product->statusReturn1line(numProduct - 2);
-
 }
 
 void Customer::enterCustomer()
 {
-
+										/*	NHẬP MỘT KHÁCH HÀNG*/
 	int x0 = x + 2;
 	int x1 = 91;
 	int high = 10;
@@ -108,39 +109,45 @@ void Customer::enterCustomer()
 
 void Customer::editCustomer(Customer list_customer[], int& numberCustomer)
 {
-	TextColor(1);
+	TextColor(1); // tạo mã màu
 	system("cls");
+
+	// in tiêu đề
 	char nameHead[][40] = { "CAP NHAT THONG TIN KHACH HANG", "Nhap So Dien Thoai Khach Hang: " };
-	bool Check = false;
-	char searchPhoneCustomer[11];
 	ShowCur(1);
-	NhieuHop(4, 1, 165, 2, t_color, b_color, nameHead, 2);
+
+	NhieuHop(4, 1, 165, 2, t_color, b_color, nameHead, 2); // vẽ khung
 	gotoXY(6 + (165 - strlen(nameHead[1])) / 2 + strlen(nameHead[1]), 4);
+	char searchPhoneCustomer[11];
 	cin >> searchPhoneCustomer;
+
 	bool kt = false;
 	int Soluong = 0;
-	int Index[20];
+	int index[20] = { 0 };
 	for (int i = 0; i < numberCustomer; i++)
 	{
 		if (strcmp(searchPhoneCustomer, list_customer[i].Person::getphoneNumber()) == 0)
 		{
-			Index[Soluong] = i;
+			index[Soluong] = i;
 			Soluong++;
 			kt = true;
 		}
 	}
-	list_customer[Index[0]].enterCustomer();
-	for (int i = 1; i < Soluong; i++) {
-		list_customer[Index[i]] = list_customer[Index[0]];
+	list_customer[index[0]].enterCustomer();
+	for (int i = 1; i < Soluong; i++)
+	{
+		list_customer[index[i]] = list_customer[index[0]];
 	}
-	if (kt == true) {
+	if (kt == true)
+	{
 		char status[][40] = { "Da Cap Nhat Thanh Cong", "Nhan [ENTER] De Quay Lai" };
 		statusreturnMenu(status, 45);
 		ShowCur(0);
 		_getch();
 		return;
 	}
-	else {
+	else
+	{
 		char status[][40] = { "Khong Tim Thay Khach Hang", "Nhan[ENTER] De Quay Lai" };
 		statusreturnMenu(status, 45);
 		ShowCur(0);
@@ -149,7 +156,8 @@ void Customer::editCustomer(Customer list_customer[], int& numberCustomer)
 	}
 }
 
-void Customer::enterProinCus(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, int SoluongThem) {
+void Customer::enterProinCus(Product list_product[], int& number, Customer list_customer[], int& numberCustomer, int SoluongThem)
+{
 	for (int i = 0; i < SoluongThem; i++)
 	{
 		int x0 = x + 2;
@@ -166,7 +174,7 @@ void Customer::enterProinCus(Product list_product[], int& number, Customer list_
 		cout << "Ma San Pham:";
 		gotoXY(x1, y + 1);
 		cin >> list_customer[numberCustomer].list_product[i].ProductID;
-		int indexi = list_product->returnProduct(list_product, number, list_customer[numberCustomer].list_product[i].ProductID);
+		int indexi = list_product->returnProduct(list_product, number, list_customer[numberCustomer].list_product[i].ProductID);// TRẢ VỀ VỊ TRÍ SẢN PHẨM
 		gotoXY(x0, y + 3);
 		cout << "Kich Co:";
 		gotoXY(x1, y + 3);
@@ -179,7 +187,8 @@ void Customer::enterProinCus(Product list_product[], int& number, Customer list_
 		{
 			gotoXY(63, 14 + 12 * 2);
 			cout << "So Luong Vuot Qua So Luong Trong Kho. Nhap Lai";
-			gotoXY(x1, y + 5); cout << "      ";
+			gotoXY(x1, y + 5);
+			cout << "      ";
 			gotoXY(x1, y + 5);
 			cin >> list_customer[numberCustomer].list_product[i].Quantity;
 		}
@@ -212,7 +221,7 @@ void Customer::addCustomer(Product list_product[], int& number, Customer list_cu
 	char nameHead[][40] = { "THEM THONG TIN KHACH HANG " };
 	NhieuHop(4, 1, 165, 2, t_color, b_color, nameHead, 1);
 	list_customer[numberCustomer].enterCustomer();
-	numProinCus[numberCustomer] = 0;
+	numProinCus[numberCustomer] = 0; //THÊM SỐ LƯỢNG SẢN PHẨM CỦA MỘJT KHÁCH HÀNG MỚI Ở CUỐI MẢNG 
 	system("cls");
 	char nameHead1[][40] = { "THEM SAN PHAM MUA ", "Nhap So Loai San Pham Can Mua:" };
 	NhieuHop(4, 1, 165, 2, t_color, b_color, nameHead1, 2);
@@ -224,9 +233,10 @@ void Customer::addCustomer(Product list_product[], int& number, Customer list_cu
 
 void Customer::getnumProinCus(int numProinCus[], int& numProduct, Customer list_customer[], int numberCustomer)
 {
-	for (int i = 0; i < numberCustomer; i++)
+											/*TRẢ VỀ MẢNG SỐ LƯỢNG SẢN PHẨM VỦA TỪNG KHÁCH HÀNG*/
+	for (int index = 0; index < numberCustomer; index++)
 	{
-		numProinCus[i] = get_num_product(list_customer, numberCustomer, i);
+		numProinCus[index] = get_num_product(list_customer, index);
 	}
 	numProduct = 0;
 	for (int i = 0; i < numberCustomer; i++)
@@ -294,7 +304,7 @@ void Customer::printBill(Product list_product[], int& number, Customer list_cust
 		gotoXY(62, 24 + 2 * i);
 		cout << list_customer[numberCustomer].list_product[i].ProductName;
 		gotoXY(62 + 23, 24 + 2 * i);
-		cout << list_customer[numberCustomer].list_product[i].priceProduct<<" $";
+		cout << list_customer[numberCustomer].list_product[i].priceProduct << " $";
 		gotoXY(62 + 33, 24 + 2 * i);
 		cout << list_customer[numberCustomer].list_product[i].Quantity;
 		gotoXY(62 + 39, 24 + 2 * i);

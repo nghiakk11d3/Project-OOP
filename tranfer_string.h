@@ -6,6 +6,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <cstring>
+#include <string.h>
 
 int tranfer_string_customer(char string[])
 {

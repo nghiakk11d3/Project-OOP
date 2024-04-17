@@ -1,10 +1,12 @@
-﻿
-#ifndef PRODUCT_FUNCTION
+﻿#ifndef PRODUCT_FUNCTION
 #define PRODUCT_FUNCTION
 #include "TaoBang.h"
 #include "product.h"
+#include "handle_file.h"
+using namespace std;
 
-void Product::enterProduct(Product list_product[], int& number, int choice) {
+void Product::enterProduct(Product list_product[], int& number, int choice)
+{														/*	NHẬP SẢN PHẨM*/
 	int x0 = x + 2;
 	int x1 = 90;
 	int high = 22;
@@ -19,7 +21,7 @@ void Product::enterProduct(Product list_product[], int& number, int choice) {
 	gotoXY(x1, y + 1);
 	cin.ignore();
 	cin >> this->ProductID;
-	if (choice == 0)
+	if (choice == 0)//KIỂM TRA XEM ĐIỀU KIỆN GỌI HÀM CÓ PHẢI LÀ THÊM SẢN PHẨM HAY KHÔNG
 	{
 		for (int i = 0; i < number; i++)
 		{
@@ -30,7 +32,7 @@ void Product::enterProduct(Product list_product[], int& number, int choice) {
 				gotoXY(x1, y + 3);
 				cin >> (this->Quantity);
 				list_product[i].Quantity += this->Quantity;
-				
+
 				goto end1;
 			}
 		}
@@ -79,7 +81,7 @@ end1:
 };
 
 void Product::addProduct(Product list_product[], int& number)
-{
+{															/*THÊM SẢN PHÂM*/
 	TextColor(1);
 	system("cls");
 	char nameHead[][40] = { "THEM SAN PHAM ", "Nhap So Luong San Pham Can Them:" };
@@ -92,16 +94,14 @@ void Product::addProduct(Product list_product[], int& number)
 	{
 		list_product[number].enterProduct(list_product, number, 0);
 		number++;
-
 	}
 	char status[][40] = { "Da Them Thanh Cong", "Nhan [ENTER] De Quay Lai" };
 	statusreturnMenu(status, 45);
 	_getch();
-	
 }
 
 void Product::print1Product(Product product, int x, int y, int i)
-{
+{								/*IN MỘT SẢN PHẨM*/
 	int x_width = 2;
 	gotoXY(x + x_width, y + 2 * i + 1);
 	cout << product.ProductID;
@@ -135,7 +135,7 @@ void Product::print1Product(Product product, int x, int y, int i)
 }
 
 void Product::printListProduct(Product list_product[], int number, int x, int y)
-{
+{				/*IN DANH SÁCH SẢN PHẨM*/
 	TextColor(1);
 	system("cls");
 	TaoBangHeader(number, x, y, "DANH SACH SAN PHAM", lengPro, Header, 10);
@@ -150,13 +150,13 @@ void Product::printListProduct(Product list_product[], int number, int x, int y)
 }
 
 void Product::editProduct(Product list_product[], int number)
-{
+{							/*SỬA THÔNG TIN SẢN PHẨM*/
 	TextColor(1);
 	system("cls");
 	char nameHead[][40] = { "Sua Thong Tin San Pham ", "Nhap Ma San Pham: " };
 	char searchID[10];
 	bool KT = false;
-	
+
 	taomenuYeuCau(nameHead, searchID);
 	for (int i = 0; i < number; i++)
 	{
@@ -183,7 +183,7 @@ void Product::editProduct(Product list_product[], int number)
 }
 
 void Product::findProduct(Product list_product[], int number)
-{
+{			/*TÌM SẢN PHẨM BẦNG TỪ KHÓA*/
 	int tmp = number;
 	int arrIndex[50];
 	for (int i = 0; i < number; i++)
@@ -212,7 +212,7 @@ loop:
 		SetColor(7);
 		for (int i = 0; i < Soluong; i++)
 		{
-			print1Product(list_product[arrIndex[i]], 4, 10 + 2 * i, 0);
+			print1Product(list_product[arrIndex[i]], 4, 10 + 2 * i, 0); //IN RA DANH SÁCH SẢN PHẨN PHÙ HỢP YÊU CẦU
 		}
 		char status[][40] = { "Nhan [SPACE] De Tiep Tuc", "Nhan [ENTER] De Quay Lai" };
 		statusreturnMenu(status, 14 + number * 2);
@@ -240,9 +240,8 @@ loop:
 	}
 }
 
-void Product::deleteProduct(Product list_product[], int& number) {
-
-	int sl = 3;
+void Product::deleteProduct(Product list_product[], int& number)
+{									/*XÓA SẢN PHẨM*/
 	TextColor(1);
 	system("cls");
 	string nameOBJ = "XOA SAN PHAM";
@@ -266,7 +265,7 @@ void Product::deleteProduct(Product list_product[], int& number) {
 			{
 				TaoBangHeader(1, 4, 6, "San Phan Can Xoa", lengPro, Header, 10);
 				SetColor(7);
-				print1Product(list_product[i], 4, 10, 0); // nhớ cộng 4 vô
+				print1Product(list_product[i], 4, 10, 0);//IN THÔNG TIN SẢN PHẨM CẦN XÓA
 				char status[][40] = { "Xac Nhan Xoa Nhan [ENTER]", "De Huy Nhan [SPACE]" };
 				statusreturnMenu(status, 14);
 				KT = true;
@@ -277,11 +276,12 @@ void Product::deleteProduct(Product list_product[], int& number) {
 						char cd = _getch();
 						if (cd == 13)
 						{
-							for (int j = i; j < number - 1; j++)
+							for (int index = i; index < number - 1; index++)
 							{
-								list_product[j] = list_product[j + 1];
+								list_product[index] = list_product[index + 1];
 							}
-							number--;
+							number--; // giảm số lượng phần tử sau khi xóa
+
 							thanh_sang(30, 12, 80, 35, 1, "");
 							char status[][40] = { "DA XOA THANH CONG!!!", "Nhan [ENTER] De Quay Lai" };
 							statusreturnMenu(status, 14);
@@ -310,9 +310,10 @@ void Product::deleteProduct(Product list_product[], int& number) {
 			deleteProduct(list_product, number);
 			break;
 		}
+		break;
 	}
-	break;
-	case 1: {
+	case 1:
+	{
 		char searchName[20];
 		TextColor(1);
 		system("cls");
@@ -322,7 +323,7 @@ void Product::deleteProduct(Product list_product[], int& number) {
 		int arrIndex[50]; // Mảng chứa thứ tự các phần tử sản phẩm cần xóa
 		for (int i = 0; i < number; i++)
 		{
-			if (strcmp(list_product[i].ProductName, searchName) == 0)
+			if (strcmp(list_product[i].ProductName, searchName) == 0)   //LƯU VÀO MẢNG VỊ TRÍ CẦN SỐ VÀ CỘNG DẦN SỐ LƯỢNG XÓA
 			{
 				arrIndex[Soluong] = i;
 				Soluong++;
@@ -334,17 +335,23 @@ void Product::deleteProduct(Product list_product[], int& number) {
 			SetColor(7);
 			for (int i = 0; i < Soluong; i++)
 			{
-				print1Product(list_product[arrIndex[i]], 4, 10 + 2 * i, 0);
+				print1Product(list_product[arrIndex[i]], 4, 10 + 2 * i, 0); ///IN RA DANH SÁCH CẦN XÓA
 			}
 			char status[][40] = { "Xac Nhan Xoa Nhan [ENTER]", "De Huy Nhan [SPACE]" };
 			statusreturnMenu(status, Soluong * 2 + 12);
-			while (1) {
-				if (_kbhit()) {
+			while (1)
+			{
+				if (_kbhit())
+				{
 					char cd = _getch();
-					if (cd == 13) {
-						for (int i = 0; i < number; i++) {
-							if (strcmp(list_product[i].ProductName, searchName) == 0) {
-								for (int j = i; j < number - 1; j++) {
+					if (cd == 13)
+					{
+						for (int i = 0; i < number; i++)
+						{
+							if (strcmp(list_product[i].ProductName, searchName) == 0)
+							{
+								for (int j = i; j < number - 1; j++)
+								{
 									list_product[j] = list_product[j + 1];
 								}
 								number--;
@@ -370,7 +377,8 @@ void Product::deleteProduct(Product list_product[], int& number) {
 				}
 			}
 		}
-		else {
+		else
+		{
 			thanh_sang(1, 10, 118, 6, 1, "");
 			char status[][40] = { "KHONG CO TEN CAN XOA", "Nhan [ENTER] De Quay Lai" };
 			statusreturnMenu(status, 45);
@@ -381,15 +389,16 @@ void Product::deleteProduct(Product list_product[], int& number) {
 		break;
 	}
 
-	case 2: {
+	case 2:
+	{
 		menuProduct(list_product, number);
 		break;
 	}
 	}
 }
 
-
-void Product::sortProduct(Product list_product[], int number) {
+void Product::sortProduct(Product list_product[], int number)
+{							/*SẮP XẾP SẢN PHẨM*/
 	TextColor(1);
 	system("cls");
 	string nameOBJ = "SAP XEP DANH SACH";
@@ -412,10 +421,9 @@ void Product::sortProduct(Product list_product[], int number) {
 	}
 }
 
-
-
-
-void Product::sortProductByID(Product list_product[], int number) {
+void Product::sortProductByID(Product list_product[], int number)
+{
+								//SAP XEP THEO MA SAN PHAM
 	string nameOBJ = "SAP XEP THEO MA SAN PHAM";
 	char nameHead[][40] = { "Giam Dan", "Tang Dan", "Quay Lai" };
 	int Choice = MenuDong(nameOBJ, nameHead, 3);
@@ -427,7 +435,7 @@ void Product::sortProductByID(Product list_product[], int number) {
 		{
 			for (int j = 0; j < number - i - 1; ++j)
 			{
-				if (strcmp(list_product[j].ProductID, list_product[j + 1].ProductID) < 0)
+				if (strcmp(list_product[j].ProductID, list_product[j + 1].ProductID) < 0)/*Giam Dan*/
 				{
 
 					swap(list_product[j], list_product[j + 1]);
@@ -443,7 +451,7 @@ void Product::sortProductByID(Product list_product[], int number) {
 		{
 			for (int j = 0; j < number - i - 1; ++j)
 			{
-				if (strcmp(list_product[j].ProductID, list_product[j + 1].ProductID) > 0)
+				if (strcmp(list_product[j].ProductID, list_product[j + 1].ProductID) > 0)/*TĂNG DẦN*/
 				{
 					swap(list_product[j], list_product[j + 1]);
 				}
@@ -458,9 +466,9 @@ void Product::sortProductByID(Product list_product[], int number) {
 	}
 }
 
-
 void Product::sortProductByName(Product list_product[], int number)
 {
+	//SAP XEP THEO TEN SAN PHAM
 	string nameOBJ = "SAP XEP THEO TEN SAN PHAM";
 	char nameHead[][40] = { "Giam Dan", "Tang Dan", "Quay Lai" };
 	int Choice = MenuDong(nameOBJ, nameHead, 3);
@@ -472,7 +480,7 @@ void Product::sortProductByName(Product list_product[], int number)
 		{
 			for (int j = 0; j < number - i - 1; ++j)
 			{
-				if (strcmp(list_product[j].ProductName, list_product[j + 1].ProductName) < 0)
+				if (strcmp(list_product[j].ProductName, list_product[j + 1].ProductName) < 0)//GIẢM DẦN
 				{
 
 					swap(list_product[j], list_product[j + 1]);
@@ -488,7 +496,7 @@ void Product::sortProductByName(Product list_product[], int number)
 		{
 			for (int j = 0; j < number - i - 1; ++j)
 			{
-				if (strcmp(list_product[j].ProductName, list_product[j + 1].ProductName) > 0)
+				if (strcmp(list_product[j].ProductName, list_product[j + 1].ProductName) > 0)//TĂNG DẦN
 				{
 
 					swap(list_product[j], list_product[j + 1]);
@@ -506,6 +514,7 @@ void Product::sortProductByName(Product list_product[], int number)
 
 void Product::sortProductByInstock(Product list_product[], int number)
 {
+															/*SAP XEP THEO SO LUONG SAN PHAM*/
 	string nameOBJ = "SAP XEP THEO SO LUONG SAN PHAM";
 	char nameHead[][40] = { "Giam Dan", "Tang Dan", "Quay Lai" };
 	int Choice = MenuDong(nameOBJ, nameHead, 3);
@@ -517,7 +526,7 @@ void Product::sortProductByInstock(Product list_product[], int number)
 		{
 			for (int j = 0; j < number - i - 1; ++j)
 			{
-				if ((list_product[j].Quantity < list_product[j + 1].Quantity))
+				if ((list_product[j].Quantity < list_product[j + 1].Quantity))//giảm dàn
 				{
 					swap(list_product[j], list_product[j + 1]);
 				}
@@ -532,7 +541,7 @@ void Product::sortProductByInstock(Product list_product[], int number)
 		{
 			for (int j = 0; j < number - i - 1; ++j)
 			{
-				if ((list_product[j].Quantity > list_product[j + 1].Quantity))
+				if ((list_product[j].Quantity > list_product[j + 1].Quantity)) //TĂNG DẦN
 				{
 
 					swap(list_product[j], list_product[j + 1]);
@@ -549,7 +558,7 @@ void Product::sortProductByInstock(Product list_product[], int number)
 }
 
 void Product::statusReturn1line(int numProduct)
-{
+{					//VIẾT DÒNG CHỮ QUAY LẠI
 	char Return[] = { "Nhan [ENTER] De Quay Quay Lai" };
 	int lengthRe = strlen(Return);
 	gotoXY((172 - lengthRe) / 2 + 1, 9 + numProduct * 2);
@@ -558,15 +567,16 @@ void Product::statusReturn1line(int numProduct)
 }
 
 int Product::returnProduct(Product list_product[], int& number, char searchID[])
-{
-
+{					//TRẢ VỀ VỊ TRÍ SẢN PHẢM
+	int position = 0;
 	for (int i = 0; i < number; i++)
 	{
 		if (strcmp(list_product[i].ProductID, searchID) == 0)
 		{
-			return i;
+			position = i;
 		}
 	}
+	return position;
 }
 
 #endif
